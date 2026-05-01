@@ -1,0 +1,43 @@
+extends:
+  - spectral:oas
+
+rules:
+  # Every operation must have a description
+  operation-description:
+    message: "Operation '{{property}}' must have a description"
+    given: "$.paths[*][get,post,put,patch,delete,options,head,trace]"
+    severity: error
+    then:
+      field: description
+      function: truthy
+
+  # Every operation must have at least one tag
+  operation-tags:
+    message: "Operation must have at least one tag"
+    given: "$.paths[*][get,post,put,patch,delete,options,head,trace]"
+    severity: error
+    then:
+      field: tags
+      function: truthy
+
+  # Every schema property should have a description
+  schema-properties-descriptions:
+    message: "Schema property '{{property}}' should have a description"
+    given: "$.components.schemas[*].properties[*]"
+    severity: warn
+    then:
+      field: description
+      function: truthy
+
+  # 4xx responses should have consistent error schema
+  error-response-schema:
+    message: "Error responses should include 'error' and 'code' fields"
+    given: "$.paths[*][*].responses[4XX,5XX].content['application/json'].schema"
+    severity: warn
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          required:
+            - error
