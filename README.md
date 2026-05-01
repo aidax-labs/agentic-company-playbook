@@ -25,6 +25,7 @@ This playbook is the result of hands-on experience building with agents, synthes
 | [7. Infrastructure & Toolchain](docs/07-toolchain.md) | The exact tools and why |
 | [8. Human Touchpoints](docs/08-human-touchpoints.md) | Where humans must stay in the loop |
 | [9. Getting Started](docs/09-getting-started.md) | Day-one checklist for a new company |
+| [10. AI Maturity Assessment](docs/10-ai-maturity-assessment.md) | Diagnose where a company is and what blocks the next level |
 
 ---
 
